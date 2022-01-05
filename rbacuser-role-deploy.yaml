@@ -1,0 +1,12 @@
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: default
+  name: deployer
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["pods","services"]
+  verbs: ["list","get","watch"]
+- apiGroups: ["extensions","apps"]
+  resources: ["deployments","deployments/scale","replicasets/scale","replicasets"]
+  verbs: ["get", "list", "watch","patch","update","create","delete"]
